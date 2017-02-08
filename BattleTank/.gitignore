@@ -44,11 +44,12 @@
 SourceArt/**/*.png
 SourceArt/**/*.tga
 
+# StarterContent
+Content/StarterContent/*
+
 # Binary Files
 Binaries/*
 
-# StarterContent
-Content/StarterContent/*
 
 # Builds
 Build/*
