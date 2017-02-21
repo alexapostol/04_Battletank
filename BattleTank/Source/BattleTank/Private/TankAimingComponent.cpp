@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "BattleTank.h"
+#include "TankBarrel.h"
 #include "TankAimingComponent.h"
 
 
@@ -14,7 +15,7 @@ UTankAimingComponent::UTankAimingComponent()
 	// ...
 }
 
-void UTankAimingComponent::SetBarrelReference(UStaticMeshComponent* BarrelToSet)
+void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet)
 {
 	Barrel = BarrelToSet;
 }
@@ -58,9 +59,9 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 		StartLocation,
 		HitLocation,
 		LaunchSpeed,
-		/* false,
-		 0,
-		 0,*/ // Default
+		false, // Default
+		 0, // Default
+		 0, // Default
 		ESuggestProjVelocityTraceOption::OnlyTraceWhileAscending
 		/*FCollisionResponseParams::DefaultResponseParam,
 		TArray<AActor*>(),
@@ -68,6 +69,7 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 		// Draw direction ^^^^
 		*/
 	);
+
 	if (bHaveAimSolution)
 	{
 		auto TankName = GetOwner()->GetName();
@@ -89,6 +91,5 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 	auto AimAsRotator = AimDirection.Rotation();
 	auto DeltaRotator = AimAsRotator - BarrelRotator;
 	UE_LOG(LogTemp, Warning, TEXT("AimAsRotator: %s"), *DeltaRotator.ToString());
-	// Move the barrel the right amount this frame
-	// Given a max elevation speed, and the frame time
+	//Barrel->Elevate(5); // TODO remove magic number
 }
