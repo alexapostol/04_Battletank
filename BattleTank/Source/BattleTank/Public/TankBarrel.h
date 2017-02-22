@@ -16,13 +16,15 @@ public:
 	
 private:
 	UPROPERTY(EditAnywhere, Category = Setup)
-		float MaxDegreesPerSecond = 0; // Sensible default
+		float MaxDegreesPerSecond = 10; // Sensible default
 
 	UPROPERTY(EditAnywhere, Category = Setup)
-		float MaxElevationDegrees = 40; // TODO Set
+		float MaxElevationDegrees = 40;
 
 	UPROPERTY(EditAnywhere, Category = Setup)
-		float MinElevationDegrees = 0; // TODO Set
+		float MinElevationDegrees = 0;
+
+
 
 
 
